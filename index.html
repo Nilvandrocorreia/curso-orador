@@ -40,7 +40,7 @@ button{cursor:pointer}
 .tnum{font-variant-numeric:tabular-nums}
 
 /* Barra superior */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:20px;min-height:60px}
 .brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:left}
 .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--hero-bg);display:grid;place-items:center;flex:none}
@@ -179,7 +179,7 @@ main{display:block}
 .steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:16.5px;max-width:72ch}
 .steps li::before{content:counter(s);font-family:var(--f-display);font-weight:900;font-size:20px;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
 .ex{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:14px 16px;font-size:15.5px;max-width:72ch}
-.ex .bad{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.ex .bad{color:var(--muted);text-decoration:line-through}
 .ex .lab{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);display:block;margin-bottom:4px}
 .ex + .ex{margin-top:2px}
 .mantra{margin-top:auto;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,3.6vw,38px);text-transform:uppercase;line-height:1.02;color:var(--accent-ink)}
@@ -385,6 +385,47 @@ tr.grp td{background:var(--surface-2);font-family:var(--f-mono);font-size:11.5px
 .fc-ans{border-top:1px solid rgba(255,255,255,.18);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .fc-strong{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,3.8vw,40px);line-height:1.05;color:#FF9D63}
 details summary{list-style-position:outside}
+
+/* Revisão de usabilidade */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+@media (max-width:760px){
+  .chips,.kit-nav,.subtabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;margin-left:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));margin-right:calc(-1 * max(16px, env(safe-area-inset-right, 0px)));padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+  .chips::-webkit-scrollbar,.kit-nav::-webkit-scrollbar,.subtabs::-webkit-scrollbar{display:none}
+  .chips .chip,.kit-nav .chip,.subtabs .chip{flex:none;white-space:nowrap}
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:12px 14px}
+  .stat b{font-size:34px}
+  .stat span{font-size:12.5px}
+  .gym .cfg{order:2}
+  .days{grid-template-columns:1fr 1fr}
+  .day{min-height:120px}
+  .day .dt{font-size:19px}
+}
+.cfg-title{font-size:20px;text-transform:uppercase}
+.slides{align-items:flex-start;transition:height .25s ease}
+.slide{min-height:0}
+.slide.hook{min-height:340px}
+.slide-next{display:flex;justify-content:flex-end;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.slide.hook .slide-next{border-top-color:rgba(255,255,255,.16)}
+.car-nav{margin:0 0 12px}
+.icon-btn:disabled{opacity:.35;cursor:default}
+.plan-list{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.plan-step{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.plan-step.is-next{border:2px solid var(--accent)}
+.plan-step.is-done{background:var(--surface-2)}
+.plan-step.is-done .pbody strong{text-decoration:line-through;text-decoration-color:var(--muted)}
+.pnum{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);font-family:var(--f-display);font-weight:900;font-size:19px}
+.pnum svg{width:20px;height:20px}
+.plan-step.is-done .pnum{background:var(--good-soft);color:var(--good)}
+.pbody{display:flex;flex-direction:column;gap:3px;min-width:0}
+@media (max-width:480px){.plan-step{grid-template-columns:36px minmax(0,1fr)}.plan-step .btn{grid-column:1/-1;width:100%}}
+.fr-grp{font-size:22px;text-transform:uppercase;margin:18px 0 10px}
+.fr-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.fr-w{color:var(--muted)}
+.fr-w .strike{text-decoration:line-through}
+.fr-s{font-weight:700;font-size:16.5px}
+.fr-card .lab{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);text-decoration:none;font-weight:700;margin-bottom:2px}
+.fr-w .lab{color:var(--muted)}
 @media (max-width:760px){.nav button{font-size:10.5px;letter-spacing:-.01em}.nav button svg{width:20px;height:20px}}
 </style>
 <style>body{margin:0}img{max-width:100%}</style></head><body>
@@ -416,10 +457,12 @@ details summary{list-style-position:outside}
       <p class="lead">Articulação, estrutura de pensamento, persuasão e presença. Um treino diário para falares como o Diretor de Operações que vais ser: claro, calmo e convincente, numa reunião de turno ou diante da administração.</p>
       <div class="wave" aria-hidden="true"><span class="lbl">Pensar</span><span class="bars" id="wave"></span><span class="lbl">Falar</span></div>
       <div class="row">
-        <button class="btn btn-p" id="cta-today">Começar o Dia 1</button>
-        <button class="btn btn-g" data-go="ginasio">Treino rápido de 5 minutos</button>
+        <button class="btn btn-p" id="cta-today">Começar o treino de hoje</button>
+        <button class="btn btn-g" data-go="curso">Ver o curso completo</button>
       </div>
     </div>
+
+    <div class="sec card plan" id="plan"></div>
 
     <div class="stats">
       <div class="stat"><b id="st-done">0/30</b><span>dias concluídos</span></div>
@@ -429,28 +472,6 @@ details summary{list-style-position:outside}
     </div>
 
     <div class="sec card" id="dir-index"></div>
-
-    <div class="sec">
-      <div class="card today" id="today-card">
-        <div class="dnum" id="td-num">01</div>
-        <div>
-          <div class="eyebrow" id="td-mod">Módulo 1 · A Máquina da Voz</div>
-          <h3 id="td-title">Diagnóstico: grava-te hoje</h3>
-          <p class="muted small" id="td-hook">Não podes melhorar o que nunca ouviste.</p>
-        </div>
-        <button class="btn btn-p" id="td-open">Abrir aula</button>
-      </div>
-    </div>
-
-    <div class="sec">
-      <div class="sec-h"><h2>A rotina diária</h2><span class="sync" id="sync">A guardar neste dispositivo</span></div>
-      <div class="routine">
-        <div><div class="t">0–5 MIN</div><h4>Articulação</h4><p>Rotina guiada: respiração, maxilar, lábios, língua, vogais, sílabas explosivas, trava‑língua com metrónomo e leitura com caneta.</p></div>
-        <div><div class="t">5–12 MIN</div><h4>Aula do dia</h4><p>Percorre o carrossel da aula e faz o exercício em voz alta. Ler sem falar não conta.</p></div>
-        <div><div class="t">12–18 MIN</div><h4>Improviso</h4><p>Três temas sorteados no Ginásio, 60 segundos cada, com a estrutura da semana. Conta as muletas.</p></div>
-        <div><div class="t">18–20 MIN</div><h4>Registo</h4><p>Dá nota à clareza e à confiança. O gráfico abaixo mostra a tua evolução.</p></div>
-      </div>
-    </div>
 
     <div class="sec why">
       <div>
@@ -865,7 +886,7 @@ LESSONS.push(
   ex:[{lab:"Objeções para treinar",good:"“É muito caro.” · “Não temos tempo para isso agora.” · “Já tentámos e não resultou.” · “A equipa não vai aceitar.” · “Isso não é prioridade.” · “Mostra‑me os números.”"}]},
  exer:{title:"Seis objeções", steps:[
    "Responde a cada objeção da lista em 45 segundos com os cinco passos.",
-   "Depois usa o Simulador “Diretor Financeiro cético” para treinar com réplica.",
+   "Depois, no Ginásio, abre o Simulador “Diretor Financeiro cético” para treinar com réplica.",
    "Repara se perguntaste antes de responder."],
    gym:{cat:"dura",st:"livre",sec:45,prep:5}},
  work:"Na próxima objeção que ouvires, faz uma pergunta antes de responder.",
@@ -982,7 +1003,7 @@ LESSONS.push(
    "<strong>Erraste:</strong> “Corrijo: o valor certo é…” Sem drama, sem desculpas longas.",
    "<strong>Precisas de tempo:</strong> “Boa pergunta. Deixa‑me pensar dois segundos.”"]},
  exer:{title:"Três minutos sob fogo", steps:[
-   "Pede a alguém que te interrompa e faça perguntas difíceis durante três minutos, ou usa o Simulador “Administração exigente”.",
+   "Pede a alguém que te interrompa e faça perguntas difíceis durante três minutos, ou, no Ginásio, o Simulador “Administração exigente”.",
    "Usa pelo menos três frases de emergência.",
    "Escreve as seis frases num cartão."],
    gym:{cat:"dura",st:"livre",sec:60,prep:0}},
@@ -997,7 +1018,7 @@ LESSONS.push(
       "Precisão também significa números no lugar de “muito” e “bastante”."],
  tech:{title:"Três hábitos de precisão", steps:[
    "<strong>Troca o vago pelo preciso:</strong> “muito” → um número; “fazer” → implementar, garantir, reduzir, eliminar; “coisa” → o nome real.",
-   "<strong>Domina o glossário de operações</strong> (está no Kit): OEE, lead time, OTIF, gargalo, takt time, PDCA…",
+   "<strong>Domina o glossário de operações</strong> (está no separador Frases): OEE, lead time, OTIF, gargalo, takt time, PDCA…",
    "<strong>Uma palavra nova por dia,</strong> usada três vezes em conversas reais."]},
  exer:{title:"Fluência relâmpago", steps:[
    "Diz dez verbos de ação em 30 segundos. Depois dez palavras sobre qualidade. Depois dez sobre pessoas.",
@@ -1041,7 +1062,7 @@ LESSONS.push(
    "<strong>Prepara as três perguntas</strong> que mais temes, com duas frases de resposta para cada."]},
  exer:{title:"Três minutos para a administração", steps:[
    "Prepara uma apresentação de três minutos sobre o teu primeiro mês (pode ser hipotética).",
-   "Grava. Depois usa o Simulador “Administração exigente”.",
+   "Grava. Depois, no Ginásio, faz o Simulador “Administração exigente”.",
    "Escreve as três perguntas assassinas e as tuas respostas nas notas."],
    gym:{cat:"dura",st:"bluf",sec:60,prep:10}},
  work:"Escreve as três perguntas que mais temes da tua chefia e prepara duas frases para cada uma.",
@@ -1062,7 +1083,7 @@ LESSONS.push(
  exer:{title:"Dois feedbacks em voz alta", steps:[
    "Escreve dois feedbacks SCI nas notas: um corretivo e um positivo.",
    "Diz os dois em voz alta: tom calmo, firme e sem pressa.",
-   "Treina no Simulador “Colaborador defensivo”."],
+   "Treina no Ginásio, Simulador “Colaborador defensivo”."],
    gym:{cat:"ops",st:"livre",sec:60,prep:20}},
  work:"Dá hoje um feedback positivo específico com SCI.",
  mantra:"Facto, comportamento, impacto, acordo"},
@@ -1899,6 +1920,9 @@ const ICON = {
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>'
 };
+const SLN = ["O gancho", "Porque funciona", "A técnica", "Exercício", "No terreno", "Mente de Diretor"];
+let fitAula = null;
+window.addEventListener("resize", () => { if (cur.view === "aula" && fitAula) fitAula(); });
 let toastT;
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2200); }
 
@@ -1909,7 +1933,8 @@ let state = defaultState();
 try { const s = localStorage.getItem(LS_KEY); if (s) state = Object.assign(defaultState(), JSON.parse(s)); } catch (e) {}
 function saveLocal(){ try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {} }
 let dbRef = null, writing = Promise.resolve(), pushT = null;
-function setSync(t){ const el = $("#sync"); if (el) el.textContent = t; }
+let syncText = "Guardado neste dispositivo";
+function setSync(t){ syncText = t; const el = $("#sync"); if (el) el.textContent = t; }
 function save(){
   state.updatedAt = Date.now();
   saveLocal();
@@ -2007,15 +2032,10 @@ function renderStats(){
 }
 function renderInicio(){
   renderStats();
-  const d = currentDay(), l = lessonOf(d), m = modOf(l.m);
-  $("#td-num").textContent = pad2(d);
-  $("#td-mod").textContent = "Módulo " + m.n + " · " + m.t;
-  $("#td-title").textContent = l.t;
-  $("#td-hook").textContent = l.hook;
-  const all = doneCount() === 30;
-  $("#cta-today").textContent = all ? "Rever o curso" : (doneCount() ? "Continuar: Dia " + d : "Começar o Dia 1");
-  $("#cta-today").onclick = () => go("aula", d);
-  $("#td-open").onclick = () => go("aula", d);
+  renderPlan();
+  const next = planSteps().find(s => !s.done);
+  $("#cta-today").textContent = next ? "Começar o treino de hoje" : "Treino de hoje feito · rever";
+  $("#cta-today").onclick = () => (planSteps().find(s => !s.done) || planSteps()[0]).go();
   renderDirCard();
   renderChart();
 }
@@ -2137,26 +2157,39 @@ function renderAula(d){
   const next = d < 30 ? '<button class="btn btn-g btn-s" data-go="aula" data-day="' + (d + 1) + '">Dia ' + (d + 1) + ICON.right + '</button>' : '';
   $("#aula").innerHTML =
     '<div class="lesson-top"><button class="btn btn-g btn-s" data-go="curso">' + ICON.left + 'Curso</button><span class="eyebrow">Dia ' + pad2(d) + ' · Módulo ' + m.n + ' · ' + esc(m.t) + '</span>' + (done ? '<span class="pill pill-done">Concluído</span>' : '') + '<h1>' + esc(l.t) + '</h1></div>' +
-    '<div class="car"><div class="slides" id="slides" tabindex="0" aria-label="Carrossel da aula">' + slides.join("") + '</div>' +
-    '<div class="car-nav"><div class="dots" id="dots">' + slides.map((_, i) => '<button aria-label="Cartão ' + (i + 1) + '" aria-current="' + (i === 0) + '" data-i="' + i + '"></button>').join("") + '</div>' +
-    '<div class="arrows"><button class="icon-btn" id="sl-prev" aria-label="Cartão anterior">' + ICON.left + '</button><button class="icon-btn" id="sl-next" aria-label="Cartão seguinte">' + ICON.right + '</button></div></div></div>' +
+    '<div class="car" id="car"><div class="car-nav"><div class="stack" style="gap:6px;min-width:0"><span class="small" id="sl-count" style="font-weight:700">Cartão 1 de ' + slides.length + ' · ' + SLN[0] + '</span><div class="dots" id="dots">' + slides.map((_, i) => '<button aria-label="Cartão ' + (i + 1) + '" aria-current="' + (i === 0) + '" data-i="' + i + '"></button>').join("") + '</div></div>' +
+    '<div class="arrows"><button class="icon-btn" id="sl-prev" aria-label="Cartão anterior">' + ICON.left + '</button><button class="icon-btn" id="sl-next" aria-label="Cartão seguinte">' + ICON.right + '</button></div></div>' +
+    '<div class="slides" id="slides" tabindex="0" aria-label="Carrossel da aula: desliza para o lado ou usa as setas">' + slides.map((s, i) => s.replace(/<\/div>$/, '<div class="slide-next">' + (i < slides.length - 1 ? '<button class="btn btn-p btn-s" data-sl="' + (i + 1) + '">Seguinte: ' + SLN[i + 1] + ICON.right + '</button>' : '<button class="btn btn-p btn-s" id="sl-end">Ir para as notas e concluir o dia</button>') + '</div></div>')).join("") + '</div></div>' +
     articCard +
     '<div class="sec notes"><label for="notes-' + d + '">As tuas notas do Dia ' + d + '</label><textarea id="notes-' + d + '" placeholder="Números do exercício, frases que queres guardar, o que correu bem e o que vais melhorar.">' + esc(state.notes[d] || "") + '</textarea></div>' +
     '<div class="done-bar"><button class="btn ' + (done ? "btn-g" : "btn-p") + '" id="done-btn">' + ICON.check + (done ? "Concluído · desmarcar" : "Marcar Dia " + d + " como concluído") + '</button><div class="row">' + prev + next + '</div></div>';
-  const sl = $("#slides"), dots = $$("#dots button");
+  const sl = $("#slides"), dots = $$("#dots button"), cards = Array.from(sl.children);
   const stepW = () => sl.clientWidth + 16;
-  const goTo = i => sl.scrollTo({left: i * stepW(), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
-  const idx = () => Math.round(sl.scrollLeft / stepW());
-  sl.addEventListener("scroll", () => { const i = idx(); dots.forEach((b, k) => b.setAttribute("aria-current", String(k === i))); }, {passive:true});
+  const idx = () => Math.max(0, Math.min(cards.length - 1, Math.round(sl.scrollLeft / stepW())));
+  const fit = () => { const c = cards[idx()]; if (c) sl.style.height = c.offsetHeight + "px"; };
+  const mark = () => { const i = idx(); dots.forEach((b, k) => b.setAttribute("aria-current", String(k === i))); $("#sl-count").textContent = "Cartão " + (i + 1) + " de " + cards.length + " · " + SLN[i]; $("#sl-prev").disabled = i === 0; $("#sl-next").disabled = i === cards.length - 1; };
+  const goTo = i => {
+    sl.scrollTo({left: i * stepW(), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    const top = $("#car").getBoundingClientRect().top;
+    if (top < 60) window.scrollBy({top: top - 70});
+    setTimeout(() => { if (!sl.isConnected) return; if (idx() !== i) sl.scrollLeft = i * stepW(); mark(); fit(); }, 650);
+  };
+  sl.addEventListener("scrollend", () => { mark(); fit(); });
+  let st;
+  sl.addEventListener("scroll", () => { mark(); clearTimeout(st); st = setTimeout(fit, 120); }, {passive:true});
+  fitAula = fit;
+  mark(); requestAnimationFrame(fit); setTimeout(fit, 400);
   dots.forEach(b => b.onclick = () => goTo(+b.dataset.i));
   $("#sl-prev").onclick = () => goTo(Math.max(0, idx() - 1));
-  const last = slides.length - 1;
+  const last = cards.length - 1;
   $("#sl-next").onclick = () => goTo(Math.min(last, idx() + 1));
+  $$("[data-sl]", sl).forEach(b => b.onclick = () => goTo(+b.dataset.sl));
+  $("#sl-end").onclick = () => $("#notes-" + d).scrollIntoView({behavior:"smooth", block:"center"});
   sl.addEventListener("keydown", e => { if (e.key === "ArrowRight") { e.preventDefault(); goTo(Math.min(last, idx() + 1)); } if (e.key === "ArrowLeft") { e.preventDefault(); goTo(Math.max(0, idx() - 1)); } });
   const ta = $("#notes-" + d); let nt;
   ta.addEventListener("input", () => { clearTimeout(nt); nt = setTimeout(() => { state.notes[d] = ta.value; save(); }, 500); });
   $("#done-btn").onclick = () => {
-    if (state.done[d]) delete state.done[d]; else { state.done[d] = todayISO(); markTrain(); }
+    if (state.done[d]) delete state.done[d]; else { state.done[d] = todayISO(); markTrain(); daily().aula = 1; daily().aulaDay = d; }
     state.notes[d] = ta.value;
     save();
     toast(state.done[d] ? "Dia " + d + " concluído. Bom trabalho." : "Dia " + d + " desmarcado.");
@@ -2223,7 +2256,8 @@ function renderImpro(){
   if (!gym.topic) gym.topic = pick(TOPICS[gym.cat]);
   const C = 339.3;
   $("#g-improviso").innerHTML =
-  '<div class="gym"><aside class="card cfg">' +
+  '<div class="callout" style="margin-bottom:14px"><strong>Como funciona:</strong> 1) lê o tema e a estrutura; 2) carrega em Começar; 3) fala em voz alta até o tempo acabar; 4) toca no botão das muletas sempre que te escapar uma; 5) dá a nota e guarda a ronda.</div>' +
+  '<div class="gym"><aside class="card cfg"><h3 class="cfg-title">Mudar tema, estrutura e tempo</h3>' +
     '<div><h4>Tipo de tema</h4><div class="row">' + chips("cat", Object.entries(CAT_LABEL), gym.cat) + '</div></div>' +
     '<div><h4>Estrutura</h4><div class="row">' + chips("st", GYM_STRUCTS.map(k => [k, STRUCTS[k].n]), gym.st) + '</div></div>' +
     '<div><h4>Tempo a falar</h4><div class="row">' + chips("sec", [20,30,45,60,90,120,180].map(s => [s, s + " s"]), gym.sec) + '</div></div>' +
@@ -2253,7 +2287,7 @@ function renderImpro(){
   $("#g-start").onclick = startGym;
   $("#g-stop").onclick = () => finishGym();
   $("#g-reset").onclick = () => { resetGym(); };
-  $("#g-fill").onclick = () => { if (gym.phase === "idle") return; gym.fillers++; $("#g-fn").textContent = gym.fillers; if (gym.phase === "done") showResult(); };
+  $("#g-fill").onclick = () => { if (gym.phase === "idle") { toast("Carrega primeiro em Começar. Depois toca aqui a cada muleta."); return; } gym.fillers++; $("#g-fn").textContent = gym.fillers; if (gym.phase === "done") showResult(); };
   $$(".rate", root).forEach(r => $$("button", r).forEach(b => b.onclick = () => {
     gym[r.dataset.rate] = +b.dataset.n;
     $$("button", r).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -2321,7 +2355,7 @@ function saveRound(){
   if (gym.saved) return;
   state.logs.push({ts:Date.now(), day:currentDay(), cat:gym.cat, st:gym.st, topic:gym.topic, secs:gym.elapsed, fillers:gym.fillers, clarity:gym.clarity, conf:gym.conf});
   state.logs = state.logs.slice(-400);
-  markTrain(); save(); gym.saved = true; showResult();
+  markTrain(); daily().impro = (daily().impro || 0) + 1; save(); gym.saved = true; showResult();
   toast("Ronda guardada. " + fmt1(gym.fillers / (gym.elapsed / 60)) + " muletas por minuto.");
 }
 
@@ -2347,24 +2381,27 @@ function renderArtic(){
   const snd = SOUNDS.find(s => s.k === artic.snd) || SOUNDS[0];
   const rd = READS[artic.read] || READS[0];
   $("#g-artic").innerHTML =
-  '<div class="card" style="border:2px solid var(--accent)"><div class="row" style="justify-content:space-between"><span class="eyebrow">Plano de articulação · Dia ' + pad2(artic.day) + ' de 30</span>' +
-    '<div class="row"><button class="icon-btn" id="a-prev" aria-label="Dia anterior">' + ICON.left + '</button><button class="icon-btn" id="a-next" aria-label="Dia seguinte">' + ICON.right + '</button></div></div>' +
-    '<h3 style="font-size:clamp(28px,4vw,40px);text-transform:uppercase;margin-top:6px">' + esc(a.f) + '</h3><p style="margin-top:8px;max-width:70ch;color:var(--ink-2);font-size:17px">' + esc(a.how) + '</p>' +
-    '<p class="small muted" style="margin-top:10px">Velocidade‑alvo de hoje no metrónomo: <strong class="tnum">' + a.bpm + ' sílabas por minuto</strong>. A fala natural ronda as 240 a 300.</p></div>' +
-
-  '<div class="sec card stack" id="rt-card"><div class="row" style="justify-content:space-between"><div><div class="eyebrow">Rotina guiada · 5 minutos e meio</div><h3 style="font-size:30px;text-transform:uppercase;margin-top:4px" id="rt-name">Aquecimento completo de articulação</h3></div><b class="tnum" id="rt-time" style="font-family:var(--f-display);font-size:54px;line-height:1">5:27</b></div>' +
+  '<div class="callout" style="margin-bottom:14px"><strong>Ordem certa:</strong> 1) faz a rotina guiada de 5 minutos; 2) faz o exercício do dia (cartão abaixo). As outras ferramentas servem para treinar mais quando quiseres.</div>' +
+  '<div class="chips" style="margin-bottom:14px">' + [["rt-card","Rotina 5 min"],["tw-card","Trava‑línguas"],["ddk-card","Pa‑ta‑ka"],["br-card","Respiração"],["rd-card","Leitura com caneta"],["snd-card","Sons difíceis"]].map(([id, n]) => '<button class="chip" data-jump="' + id + '">' + n + '</button>').join("") + '</div>' +
+  '<div class="sec card stack" id="rt-card" style="margin-top:0"><div class="row" style="justify-content:space-between"><div><div class="eyebrow">Passo 1 · Rotina guiada · 5 minutos e meio</div><h3 style="font-size:30px;text-transform:uppercase;margin-top:4px" id="rt-name">Aquecimento completo de articulação</h3></div><b class="tnum" id="rt-time" style="font-family:var(--f-display);font-size:54px;line-height:1">5:27</b></div>' +
     '<p id="rt-inst" style="font-size:17px;max-width:70ch;color:var(--ink-2)">Nove exercícios seguidos, com aviso sonoro em cada mudança. Faz de pé, em voz alta. É o aquecimento que os atores e locutores fazem antes de entrar em cena.</p>' +
     '<div id="rt-extra"></div><div class="toprog" style="border-radius:3px"><i id="rt-bar"></i></div>' +
     '<div class="row"><button class="btn btn-p" id="rt-start">' + ICON.play + 'Começar rotina</button><button class="btn btn-g" id="rt-skip" hidden>Saltar passo</button><button class="btn btn-g" id="rt-stop" hidden>Parar</button><span class="small muted" id="rt-step"></span></div></div>' +
+  '<div class="sec card" style="border:2px solid var(--accent)"><span class="eyebrow">Passo 2 · Exercício do dia ' + pad2(artic.day) + ' de 30</span>' +
+    '<h3 style="font-size:clamp(28px,4vw,40px);text-transform:uppercase;margin-top:6px">' + esc(a.f) + '</h3><p style="margin-top:8px;max-width:70ch;color:var(--ink-2);font-size:17px">' + esc(a.how) + '</p>' +
+    (a.tw ? '<div class="tongue" style="margin-top:12px">' + esc(a.tw) + '</div>' : '') +
+    '<p class="small muted" style="margin-top:10px">Velocidade‑alvo no metrónomo: <strong class="tnum">' + a.bpm + ' sílabas por minuto</strong>. A fala natural ronda as 240 a 300.</p>' +
+    '<div class="row" style="margin-top:12px"><button class="btn btn-g btn-s" id="a-prev"' + (artic.day === 1 ? " disabled" : "") + '>' + ICON.left + 'Dia anterior</button><button class="btn btn-g btn-s" id="a-next"' + (artic.day === 30 ? " disabled" : "") + '>Dia seguinte' + ICON.right + '</button></div></div>' +
 
-  '<div class="sec grid2">' +
-    '<div class="card stack"><div class="eyebrow">Trava‑línguas com metrónomo</div><div class="row">' + chips("lvl", [[1,"Nível 1"],[2,"Nível 2"],[3,"Nível 3"]], artic.lvl) + '<button class="chip" id="a-vow" aria-pressed="' + artic.vowels + '">Só vogais</button></div>' +
+  '<h3 class="sec" style="font-size:26px;text-transform:uppercase">Treino extra</h3>' +
+  '<div class="grid2" style="margin-top:12px">' +
+    '<div class="card stack" id="tw-card"><div class="eyebrow">Trava‑línguas com metrónomo</div><div class="row">' + chips("lvl", [[1,"Nível 1"],[2,"Nível 2"],[3,"Nível 3"]], artic.lvl) + '<button class="chip" id="a-vow" aria-pressed="' + artic.vowels + '">Só vogais</button></div>' +
       '<div class="tongue" id="a-tw">' + esc(artic.vowels ? vowelsOnly(artic.tw) : artic.tw) + '</div><div class="row"><button class="btn btn-g btn-s" id="a-other">Outro trava‑língua</button></div>' +
       '<div class="row" style="align-items:center"><button class="icon-btn" id="m-dn" aria-label="Mais lento">−</button><div style="text-align:center;min-width:120px"><b class="tnum" id="m-bpm" style="font-family:var(--f-display);font-size:44px;line-height:1">' + artic.bpm + '</b><div class="small muted" id="m-sps">' + fmt1(artic.bpm / 60) + ' sílabas por segundo</div></div><button class="icon-btn" id="m-up" aria-label="Mais rápido">+</button>' +
       '<span id="m-dot" style="width:22px;height:22px;border-radius:50%;background:var(--line);transition:background .06s"></span><button class="btn btn-p" id="m-go">' + ICON.play + 'Ligar metrónomo</button></div>' +
       '<p class="note">Uma sílaba por batida. Três repetições perfeitas: sobe 10. Tropeçaste: desce 10. Velocidade sem nitidez não conta.</p></div>' +
 
-    '<div class="card stack"><div class="eyebrow">Desafio Pa‑ta‑ka · 10 segundos</div><div class="tongue" style="font-size:clamp(40px,6vw,64px)">pa‑ta‑ka</div>' +
+    '<div class="card stack" id="ddk-card"><div class="eyebrow">Desafio Pa‑ta‑ka · 10 segundos</div><div class="tongue" style="font-size:clamp(40px,6vw,64px)">pa‑ta‑ka</div>' +
       '<p class="small" style="color:var(--ink-2)">Os terapeutas da fala usam este exercício para medir a agilidade da boca. Repete “pataka” o mais depressa possível <strong>sem perder nitidez</strong>. Grava e conta ao ouvir.</p>' +
       '<div class="row"><b class="tnum" id="d-time" style="font-family:var(--f-display);font-size:54px;line-height:1">10</b><button class="btn btn-p" id="d-go">' + ICON.play + 'Começar</button></div>' +
       '<div class="row" id="d-in" hidden><label for="d-n" class="small" style="font-weight:700">Quantos “pataka” completos?</label><input id="d-n" type="number" min="1" max="80" inputmode="numeric" style="width:90px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface)"><button class="btn btn-p btn-s" id="d-save">Guardar</button></div>' +
@@ -2372,17 +2409,18 @@ function renderArtic(){
   '</div>' +
 
   '<div class="sec grid2">' +
-    '<div class="card stack"><div class="eyebrow">Respiração 4‑4‑6</div><div class="breath"><div class="bcircle" id="b-c"><b id="b-l">Pronto</b></div><div class="row" style="justify-content:center"><button class="btn btn-p" id="b-go">' + ICON.play + 'Começar</button><span class="small muted" id="b-n">0 ciclos</span></div></div></div>' +
-    '<div class="card stack"><div class="eyebrow">Leitura com caneta</div><div class="row">' + chips("read", READS.map((r, i) => [i, r.n]), artic.read) + '</div>' +
+    '<div class="card stack" id="br-card"><div class="eyebrow">Respiração 4‑4‑6</div><div class="breath"><div class="bcircle" id="b-c"><b id="b-l">Pronto</b></div><div class="row" style="justify-content:center"><button class="btn btn-p" id="b-go">' + ICON.play + 'Começar</button><span class="small muted" id="b-n">0 ciclos</span></div></div></div>' +
+    '<div class="card stack" id="rd-card"><div class="eyebrow">Leitura com caneta</div><div class="row">' + chips("read", READS.map((r, i) => [i, r.n]), artic.read) + '</div>' +
       '<p style="font-size:18.5px;line-height:1.6">' + esc(rd.t) + '</p><div class="row"><button class="btn btn-g btn-s" id="r-go">Cronometrar 60 s</button><b class="tnum" id="r-time" style="font-family:var(--f-mono)">1:00</b></div>' +
       '<p class="note">Primeira leitura com uma caneta atravessada entre os dentes, a exagerar. Segunda leitura sem caneta. Grava a segunda e compara.</p></div>' +
   '</div>' +
 
-  '<div class="sec card stack"><div class="eyebrow">Banco de sons difíceis do português</div><div class="row">' + chips("snd", SOUNDS.map(s => [s.k, s.n]), artic.snd) + '</div>' +
+  '<div class="sec card stack" id="snd-card"><div class="eyebrow">Banco de sons difíceis do português</div><div class="chips">' + chips("snd", SOUNDS.map(s => [s.k, s.n]), artic.snd) + '</div>' +
     '<div class="tongue" style="font-size:clamp(22px,3vw,32px);line-height:1.3">' + snd.w.split(" · ").map(w => esc(w)).join('<span style="color:var(--accent)"> · </span>') + '</div>' +
     '<div class="callout">' + esc(snd.tip) + '</div><p class="note">Cada palavra três vezes: sílaba a sílaba, depois devagar e exagerado, depois à velocidade natural.</p></div>';
 
   const root = $("#g-artic");
+  $$("[data-jump]", root).forEach(b => b.onclick = () => { const t = $("#" + b.dataset.jump); if (t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 76, behavior:"smooth"}); });
   $("#a-prev").onclick = () => { setArticDay(Math.max(1, artic.day - 1)); stopAll(); renderArtic(); };
   $("#a-next").onclick = () => { setArticDay(Math.min(30, artic.day + 1)); stopAll(); renderArtic(); };
   $$("[data-set]", root).forEach(b => b.onclick = () => {
@@ -2436,7 +2474,7 @@ function rtStep(i){
   clearT(rt.t);
   if (i >= ROUTINE.length) {
     rt.i = -1; beep(880, .12); setTimeout(() => beep(1180, .2), 160);
-    markTrain(); save(); toast("Rotina de articulação concluída.");
+    markTrain(); daily().artic = 1; save(); toast("Rotina de articulação concluída. Agora faz o exercício do dia.");
     renderArtic(); return;
   }
   rt.i = i; const s = ROUTINE[i]; rt.end = Date.now() + s.s * 1000; beep(990, .14);
@@ -2488,6 +2526,7 @@ function startDdk(){
 
 /* ---------- Claude (IA) ---------- */
 let sampleFn = null, sampleChecked = false;
+const HAS_CLAUDE = !!(window.claude && window.claude.use);
 (async () => {
   try { sampleFn = window.claude && window.claude.use ? await claude.use("sample") : null; } catch (e) { sampleFn = null; }
   sampleChecked = true;
@@ -2509,8 +2548,10 @@ const list = a => '<ul>' + (Array.isArray(a) ? a : []).map(x => '<li>' + esc(x) 
 
 /* ---------- coach de transcrição ---------- */
 let coachPre = null;
-const FILL = [["ééé / hum", /(?<!\p{L})(?:é{2,}|eh+|hã+|hum+|hmm+|ahn+)(?!\p{L})/giu],["tipo", /(?<!\p{L})tipo(?!\p{L})/giu],["pronto", /(?<!\p{L})pronto(?!\p{L})/giu],["portanto", /(?<!\p{L})portanto(?!\p{L})/giu],["basicamente", /(?<!\p{L})basicamente(?!\p{L})/giu],["sabes / percebes", /(?<!\p{L})(?:sabes|percebes)(?!\p{L})/giu],["tás a ver", /(?<!\p{L})(?:tás|estás) a ver(?!\p{L})/giu],["quer dizer", /(?<!\p{L})quer dizer(?!\p{L})/giu],["digamos", /(?<!\p{L})digamos(?!\p{L})/giu],["ok", /(?<!\p{L})(?:ok|okay)(?!\p{L})/giu],["né", /(?<!\p{L})né(?!\p{L})/giu],["literalmente", /(?<!\p{L})literalmente(?!\p{L})/giu],["na verdade", /(?<!\p{L})na verdade(?!\p{L})/giu]];
-const WEAKP = [["acho que", /(?<!\p{L})acho que(?!\p{L})/giu],["talvez", /(?<!\p{L})talvez(?!\p{L})/giu],["se calhar", /(?<!\p{L})se calhar(?!\p{L})/giu],["só queria", /(?<!\p{L})só queria(?!\p{L})/giu],["desculpa", /(?<!\p{L})desculp\p{L}*/giu],["não sei se", /(?<!\p{L})não sei se(?!\p{L})/giu],["um bocado", /(?<!\p{L})um bocado(?!\p{L})/giu],["mais ou menos", /(?<!\p{L})mais ou menos(?!\p{L})/giu],["penso que", /(?<!\p{L})penso que(?!\p{L})/giu]];
+/* Contagem de palavras sem lookbehind (compatível com iPhones antigos) */
+const WRX = s => new RegExp("(^|[^\\p{L}])(" + s + ")(?=[^\\p{L}]|$)", "giu");
+const FILL = [["ééé / hum", WRX("é{2,}|eh+|hã+|hum+|hmm+|ahn+")],["tipo", WRX("tipo")],["pronto", WRX("pronto")],["portanto", WRX("portanto")],["basicamente", WRX("basicamente")],["sabes / percebes", WRX("sabes|percebes")],["tás a ver", WRX("(?:tás|estás) a ver")],["quer dizer", WRX("quer dizer")],["digamos", WRX("digamos")],["ok", WRX("ok|okay")],["né", WRX("né")],["literalmente", WRX("literalmente")],["na verdade", WRX("na verdade")]];
+const WEAKP = [["acho que", WRX("acho que")],["talvez", WRX("talvez")],["se calhar", WRX("se calhar")],["só queria", WRX("só queria")],["desculpa", WRX("desculp\\p{L}*")],["não sei se", WRX("não sei se")],["um bocado", WRX("um bocado")],["mais ou menos", WRX("mais ou menos")],["penso que", WRX("penso que")]];
 function analyze(text, secs){
   const words = text.match(/[\p{L}\p{N}][\p{L}\p{N}'‑-]*/gu) || [];
   const count = arr => arr.map(([n, re]) => [n, (text.match(re) || []).length]).filter(x => x[1] > 0);
@@ -2547,7 +2588,10 @@ function renderCoach(){
   };
   ta.addEventListener("input", upd); secsIn.addEventListener("input", upd);
   const ask = $("#c-ask"), note = $("#c-note");
-  if (!sampleFn) { ask.disabled = true; note.textContent = sampleChecked ? "O Coach com IA funciona quando abres o curso em claude.ai com a tua conta. A análise automática funciona sempre." : "A ligar ao Claude…"; }
+  if (!sampleFn) {
+    if (sampleChecked || !HAS_CLAUDE) { ask.hidden = true; note.innerHTML = '<span class="callout" style="display:block">A análise com IA precisa de internet e do curso aberto em claude.ai, por isso não aparece aqui. A análise automática acima funciona sempre: muletas, palavras fracas, velocidade e tamanho das frases. Compara depois com o exemplo da estrutura no Improviso.</span>'; }
+    else { ask.disabled = true; note.textContent = "A ligar ao Claude…"; }
+  }
   ask.onclick = async () => {
     const t = ta.value.trim();
     if (t.split(/\s+/).length < 15) { toast("Escreve pelo menos 15 palavras do que disseste."); return; }
@@ -2585,7 +2629,7 @@ function renderSim(){
   const root = $("#g-sim");
   if (!sim.sc) {
     root.innerHTML = '<div class="sec-h"><div><div class="eyebrow">Simulador de conversas difíceis</div><h2 style="margin-top:6px">Treina antes da reunião real</h2></div></div>' +
-      '<p style="max-width:70ch;color:var(--ink-2);margin-bottom:18px">Escolhe uma situação. O Claude faz de interlocutor e reage ao que dizes: se fores vago, pressiona; se fores claro, avança. No fim recebes uma avaliação com notas e a tua resposta mais fraca reescrita. Responde em voz alta primeiro e depois dita ou escreve.</p>' +
+      '<p style="max-width:70ch;color:var(--ink-2);margin-bottom:18px">' + (sampleFn ? 'Escolhe uma situação. O Claude faz de interlocutor e reage ao que dizes: se fores vago, pressiona; se fores claro, avança. No fim recebes uma avaliação com notas e a tua resposta mais fraca reescrita. Responde em voz alta primeiro e depois dita ou escreve.' : 'Escolhe uma situação difícil do teu futuro cargo. Vês primeiro um exemplo de boa resposta e depois respondes em voz alta, com cronómetro, a quatro perguntas do interlocutor. (Com internet, no curso aberto em claude.ai, o Claude também faz de interlocutor e avalia‑te.)') + '</p>' +
       '<div class="scen">' + SCEN.map(s => '<button data-sc="' + s.id + '"><span class="eyebrow">' + esc(s.role) + '</span><span class="who">' + esc(s.who) + '</span><span class="small muted">' + esc(s.ctx) + '</span></button>').join("") + '</div>';
     $$("[data-sc]", root).forEach(b => b.onclick = () => { sim.sc = SCEN.find(s => s.id === b.dataset.sc); sim.turns = [{who:"them", text:sim.sc.open}]; sim.qi = 0; sim.mode = sampleFn ? "ai" : "solo"; renderSim(); });
     return;
@@ -2593,11 +2637,11 @@ function renderSim(){
   const sc = sim.sc, mine = sim.turns.filter(t => t.who === "me").length;
   let h = '<div class="lesson-top"><button class="btn btn-g btn-s" id="s-back">' + ICON.left + 'Cenários</button><span class="eyebrow">' + esc(sc.role) + '</span><h1 style="font-size:clamp(32px,5vw,54px)">' + esc(sc.who) + '</h1></div>' +
     '<p style="max-width:70ch;color:var(--ink-2);margin-top:8px">' + esc(sc.ctx) + '</p>' +
-    '<div class="row" style="margin-top:14px"><button class="chip" data-mode="ai" aria-pressed="' + (sim.mode === "ai") + '"' + (sampleFn ? "" : " disabled") + '>Com IA: o Claude responde</button><button class="chip" data-mode="solo" aria-pressed="' + (sim.mode === "solo") + '">A solo: perguntas fixas</button></div>';
+    (sampleFn ? '<div class="row" style="margin-top:14px"><button class="chip" data-mode="ai" aria-pressed="' + (sim.mode === "ai") + '">Com IA: o Claude responde</button><button class="chip" data-mode="solo" aria-pressed="' + (sim.mode === "solo") + '">A solo: perguntas fixas</button></div>' : '');
   if (!sampleFn && sim.mode === "ai") sim.mode = "solo";
   if (sim.mode === "solo") {
     const q = sc.qs[sim.qi];
-    h += (sampleFn ? "" : '<p class="note" style="margin-top:10px">' + (sampleChecked ? "O modo com IA funciona quando abres o curso em claude.ai com a tua conta." : "A ligar ao Claude…") + '</p>') +
+    h += (sampleFn ? "" : '<p class="callout" style="margin-top:12px">' + (sampleChecked || !HAS_CLAUDE ? "Modo a solo: lês a pergunta, respondes em voz alta em 60 segundos e passas à seguinte. O modo em que o Claude responde precisa de internet e do curso aberto em claude.ai." : "A ligar ao Claude…") + '</p>') +
       '<div class="topic" style="margin-top:18px"><span class="eyebrow">Pergunta ' + (sim.qi + 1) + ' de ' + sc.qs.length + ' · responde em voz alta</span><div class="q">' + esc(q) + '</div>' +
       '<div class="frame"><span><b>1</b>Pausa e respira</span><span><b>2</b>Conclusão primeiro</span><span><b>3</b>Um número ou exemplo</span><span><b>4</b>Fecha com próximo passo</span></div></div>' +
       (sim.qi === 0 ? '<details class="card" style="margin-top:14px" open><summary style="cursor:pointer"><strong>Exemplo de boa resposta a esta pergunta</strong></summary><p style="margin-top:8px">' + esc(SCEN_GOOD[sc.id]) + '</p></details>' : '') +
@@ -2685,6 +2729,44 @@ async function simEval(){
 const _applyRemote = applyRemote;
 applyRemote = function(r){ _applyRemote(r); ["pres","pnotes","comps","d90"].forEach(k => { if (!state[k] || typeof state[k] !== "object") state[k] = {}; }); if (cur.view === "inicio") renderDirCard(); };
 
+/* ---------- plano de hoje ---------- */
+function daily(){
+  const t = todayISO();
+  if (!state.daily || state.daily.date !== t) state.daily = {date:t, artic:0, aula:0, aulaDay:0, impro:0, pres:0, frases:0};
+  return state.daily;
+}
+function planSteps(){
+  const d = currentDay(), dl = daily();
+  const aDay = dl.aula ? (dl.aulaDay || d) : d;
+  const g = lessonOf(d).exer.gym;
+  const gOk = g && TOPICS[g.cat] && STRUCTS[g.st];
+  let np = PRES.findIndex((_, i) => !state.pres[i]); if (np < 0) np = 0;
+  return [
+    {n:"Articulação", t:"5 min", sub:"Rotina guiada de dicção e exercício do dia: " + ARTIC[d - 1].f, done:dl.artic >= 1,
+     go:() => { setArticDay(d); gymTab = "artic"; go("ginasio"); }},
+    {n:"Aula do Dia " + aDay, t:"7 min", sub:lessonOf(aDay).t + (dl.aula ? "" : ". No fim, marca o dia como concluído."), done:dl.aula >= 1,
+     go:() => go("aula", aDay)},
+    {n:"Improviso", t:"3 × 60 s", sub:"Estrutura " + (gOk ? STRUCTS[g.st].n : STRUCTS[gym.st].n) + " · " + Math.min(dl.impro, 3) + " de 3 rondas guardadas", done:dl.impro >= 3,
+     go:() => { if (gOk && gym.phase === "idle") Object.assign(gym, {cat:g.cat, st:g.st, sec:g.sec, prep:g.prep, topic:pick(TOPICS[g.cat]), fillers:0}); gymTab = "improviso"; go("ginasio"); }},
+    {n:"Apresentação", t:"5 min", sub:"Técnica " + (np + 1) + ": " + PRES[np].n + ". Marca como praticada no fim.", done:dl.pres >= 1,
+     go:() => go("pres", np)},
+    {n:"Frases de diretor", t:"3 min", sub:Math.min(dl.frases, 10) + " de 10 frases no treino de frases", done:dl.frases >= 10,
+     go:() => { kitTab2 = "flash"; go("kit"); }}
+  ];
+}
+function renderPlan(){
+  const el = $("#plan"); if (!el) return;
+  const S = planSteps(), n = S.filter(s => s.done).length, nextI = S.findIndex(s => !s.done);
+  el.innerHTML = '<div class="row" style="justify-content:space-between"><span class="eyebrow">Plano de hoje · cerca de 25 minutos</span><span class="sync" id="sync">' + esc(syncText) + '</span></div>' +
+    '<h2 style="font-size:clamp(28px,4vw,38px);text-transform:uppercase;margin-top:6px">' + (n === 5 ? "Treino de hoje completo" : "Faz isto, por esta ordem") + '</h2>' +
+    '<div class="row" style="margin-top:10px;gap:10px"><div class="meter" style="flex:1"><i style="width:' + (n / 5 * 100) + '%"></i></div><span class="tnum small" style="font-weight:700">' + n + ' de 5</span></div>' +
+    (n === 5 ? '<p class="callout" style="margin-top:12px">Muito bem. Amanhã continua com o Dia ' + currentDay() + '. Se quiseres mais, treina uma técnica de apresentação extra ou o simulador.</p>' : '') +
+    '<ol class="plan-list">' + S.map((s, i) => '<li class="plan-step' + (s.done ? " is-done" : "") + (i === nextI ? " is-next" : "") + '"><span class="pnum">' + (s.done ? ICON.check : (i + 1)) + '</span>' +
+      '<div class="pbody"><div class="row" style="gap:8px"><strong>' + esc(s.n) + '</strong><span class="pill ' + (s.done ? "pill-done" : "pill-today") + '">' + (s.done ? "Feito" : esc(s.t)) + '</span></div><span class="small muted">' + esc(s.sub) + '</span></div>' +
+      '<button class="btn ' + (i === nextI ? "btn-p" : "btn-g") + ' btn-s" data-plan="' + i + '">' + (s.done ? "Repetir" : "Fazer") + '</button></li>').join("") + '</ol>';
+  $$("[data-plan]", el).forEach(b => b.onclick = () => planSteps()[+b.dataset.plan].go());
+}
+
 function runTimer(btn, el, secs){
   audio(); beep(990, .15);
   const end = Date.now() + secs * 1000;
@@ -2726,7 +2808,7 @@ function renderApresentar(){
     '<div class="sec topic" id="pr-flash"><div class="row" style="justify-content:space-between"><span class="eyebrow">Treino relâmpago · 60 segundos</span><button class="btn btn-g btn-s" id="pr-roll">Sortear técnica e tema</button></div>' +
     '<div class="q" id="pr-fq">Sorteia uma técnica e um tema e apresenta em 60 segundos.</div><div class="frame" id="pr-ff"><span>Exemplo: “O número de impacto” + “Como reduzirias as horas extra?”</span></div>' +
     '<div class="row"><button class="btn btn-p" id="pr-ft" disabled>' + ICON.play + 'Começar 60 s</button><b class="tnum" id="pr-fc" style="font-family:var(--f-display);font-size:40px">1:00</b><button class="btn btn-g btn-s" id="pr-fo" hidden>Ver a técnica</button></div></div>' +
-    '<div class="sec row">' + [["all","Todas"]].concat(PCATS.map(c => [c.k, c.n])).map(([k, n]) => '<button class="chip" data-pcat="' + k + '" aria-pressed="' + (k === presCat) + '">' + esc(n) + '</button>').join("") + '</div>';
+    '<div class="sec chips">' + [["all","Todas"]].concat(PCATS.map(c => [c.k, c.n])).map(([k, n]) => '<button class="chip" data-pcat="' + k + '" aria-pressed="' + (k === presCat) + '">' + esc(n) + '</button>').join("") + '</div>';
   for (const c of cats) {
     h += '<div class="mod"><div class="mod-h"><div class="mn">' + (PCATS.indexOf(c) + 1) + '</div><h2>' + esc(c.n) + '</h2><p>' + esc(c.p) + '</p></div><div class="pgrid">';
     PRES.forEach((p, i) => { if (p.c !== c.k) return;
@@ -2737,13 +2819,15 @@ function renderApresentar(){
   $("#pres").innerHTML = h;
   $$("[data-pcat]").forEach(b => b.onclick = () => { presCat = b.dataset.pcat; renderApresentar(); });
   let pick_i = -1;
-  $("#pr-roll").onclick = () => {
+  const roll = () => {
     pick_i = Math.floor(Math.random() * PRES.length);
     const topic = pick(TOPICS.ops.concat(TOPICS.dura));
     $("#pr-fq").textContent = PRES[pick_i].n + ": " + topic;
     $("#pr-ff").innerHTML = PRES[pick_i].how.map((s, k) => '<span><b>' + (k + 1) + '</b>' + esc(s) + '</span>').join("");
     $("#pr-ft").disabled = false; $("#pr-fo").hidden = false;
   };
+  $("#pr-roll").onclick = roll;
+  roll();
   $("#pr-ft").onclick = () => runTimer($("#pr-ft"), $("#pr-fc"), 60);
   $("#pr-fo").onclick = () => { if (pick_i >= 0) go("pres", pick_i); };
 }
@@ -2766,7 +2850,7 @@ function renderPresDetail(i){
   const ta = $("#pd-n"); let nt;
   ta.addEventListener("input", () => { clearTimeout(nt); nt = setTimeout(() => { state.pnotes[i] = ta.value; save(); }, 500); });
   $("#pd-done").onclick = () => {
-    if (state.pres[i]) delete state.pres[i]; else { state.pres[i] = todayISO(); markTrain(); }
+    if (state.pres[i]) delete state.pres[i]; else { state.pres[i] = todayISO(); markTrain(); daily().pres = 1; }
     state.pnotes[i] = ta.value; save();
     toast(state.pres[i] ? "Técnica praticada. Mente de Diretor: " + dirIndex().total + "%" : "Técnica desmarcada.");
     renderPresDetail(i);
@@ -2815,24 +2899,27 @@ let frCat = "all", frQ = "";
 const fc = {cat:"all", order:[], i:0, shown:false};
 function frList(cat){ return FR.filter(f => cat === "all" || f[0] === cat); }
 function shuffleFc(){ const L = frList(fc.cat).map((_, i) => i); for (let i = L.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [L[i], L[j]] = [L[j], L[i]]; } fc.order = L; fc.i = 0; fc.shown = false; }
-function trocasHTML(){
+function trocasList(){
   const q = frQ.trim().toLowerCase();
   const L = frList(frCat).filter(f => !q || (f[1] + " " + f[2] + " " + f[3]).toLowerCase().includes(q));
-  let rows = "";
+  let h = "";
   FCATS.forEach(([k, n]) => {
     const g = L.filter(f => f[0] === k); if (!g.length) return;
-    rows += '<tr class="grp"><td colspan="3">' + esc(n) + ' · ' + g.length + '</td></tr>' + g.map(f => '<tr><td class="weak">' + esc(f[1]) + '</td><td class="strong">' + esc(f[2]) + '</td><td class="small muted">' + esc(f[3]) + '</td></tr>').join("");
+    h += '<h3 class="fr-grp">' + esc(n) + ' <span class="muted small">· ' + g.length + '</span></h3>' + g.map(f => '<div class="fr-card"><div class="fr-w"><span class="lab">Em vez de</span><span class="strike">' + esc(f[1]) + '</span></div><div class="fr-s"><span class="lab">Diz</span>' + esc(f[2]) + '</div><div class="small muted">' + esc(f[3]) + '</div></div>').join("");
   });
-  return '<p class="muted" style="margin-bottom:12px">' + FR.length + ' frases para trocares já. Lê cada par em voz alta: primeiro a fraca, depois a forte com o final a descer. Sente a diferença.</p>' +
+  return h || '<p class="muted">Nenhuma frase encontrada. Experimenta outra palavra.</p>';
+}
+function trocasHTML(){
+  return '<p class="muted" style="margin-bottom:12px">' + FR.length + ' frases para trocares já. Lê cada par em voz alta: primeiro a fraca, depois a forte com o final a descer. Para decorar, usa o separador “Treino de frases”.</p>' +
     '<div class="row" style="margin-bottom:12px"><input id="fr-q" type="search" placeholder="Procurar (ex.: prazo, desculpa, números)" value="' + esc(frQ) + '" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface)"></div>' +
-    '<div class="row" style="margin-bottom:14px">' + [["all","Todas"]].concat(FCATS).map(([k, n]) => '<button class="chip" data-frcat="' + k + '" aria-pressed="' + (k === frCat) + '">' + esc(n) + '</button>').join("") + '</div>' +
-    '<div class="tbl-wrap"><table><thead><tr><th>Em vez de dizer</th><th>Diz</th><th>Porquê</th></tr></thead><tbody>' + (rows || '<tr><td colspan="3" class="muted">Nenhuma frase encontrada.</td></tr>') + '</tbody></table></div>';
+    '<div class="chips" style="margin-bottom:14px">' + [["all","Todas"]].concat(FCATS).map(([k, n]) => '<button class="chip" data-frcat="' + k + '" aria-pressed="' + (k === frCat) + '">' + esc(n) + '</button>').join("") + '</div>' +
+    '<div id="fr-list">' + trocasList() + '</div>';
 }
 function flashHTML(){
   if (!fc.order.length) shuffleFc();
   const L = frList(fc.cat), f = L[fc.order[fc.i]];
   return '<p class="muted" style="margin-bottom:12px">Lê a frase fraca. Diz em voz alta como a dirias como diretor. Depois revela e compara. Repete a versão forte duas vezes com o final a descer.</p>' +
-    '<div class="row" style="margin-bottom:14px">' + [["all","Todas"]].concat(FCATS).map(([k, n]) => '<button class="chip" data-fccat="' + k + '" aria-pressed="' + (k === fc.cat) + '">' + esc(n) + '</button>').join("") + '</div>' +
+    '<div class="chips" style="margin-bottom:14px">' + [["all","Todas"]].concat(FCATS).map(([k, n]) => '<button class="chip" data-fccat="' + k + '" aria-pressed="' + (k === fc.cat) + '">' + esc(n) + '</button>').join("") + '</div>' +
     '<div class="topic" style="max-width:820px"><div class="row" style="justify-content:space-between"><span class="eyebrow">Em vez de dizer…</span><span class="tnum small" style="color:var(--hero-muted)">' + (fc.i + 1) + ' de ' + L.length + '</span></div>' +
     '<div class="q" style="text-transform:none">“' + esc(f[1]) + '”</div>' +
     (fc.shown ? '<div class="fc-ans"><span class="eyebrow">Diz</span><div class="fc-strong">“' + esc(f[2]) + '”</div><p style="color:var(--hero-muted)">' + esc(f[3]) + '</p></div>' : '') +
@@ -2854,13 +2941,13 @@ function renderKit(){
   $$("[data-kit]").forEach(b => b.onclick = () => { kitTab2 = b.dataset.kit; renderKit(); });
   if (kitTab2 === "trocas") {
     const qi = $("#fr-q"); let t;
-    qi.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { frQ = qi.value; const pos = qi.selectionStart; renderKit(); const n = $("#fr-q"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (e) {} }, 250); });
+    qi.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { frQ = qi.value; $("#fr-list").innerHTML = trocasList(); }, 200); });
     $$("[data-frcat]").forEach(b => b.onclick = () => { frCat = b.dataset.frcat; renderKit(); });
   }
   if (kitTab2 === "flash") {
     $$("[data-fccat]").forEach(b => b.onclick = () => { fc.cat = b.dataset.fccat; shuffleFc(); renderKit(); });
     const s = $("#fc-show"); if (s) s.onclick = () => { fc.shown = true; renderKit(); };
-    const n = $("#fc-next"); if (n) n.onclick = () => { fc.i = (fc.i + 1) % fc.order.length; fc.shown = false; renderKit(); };
+    const n = $("#fc-next"); if (n) n.onclick = () => { fc.i = (fc.i + 1) % fc.order.length; fc.shown = false; daily().frases = (daily().frases || 0) + 1; save(); if (daily().frases === 10) toast("10 frases treinadas hoje. Passo do plano concluído."); renderKit(); };
     $("#fc-shuf").onclick = () => { shuffleFc(); renderKit(); };
   }
   if (kitTab2 === "antes") {
